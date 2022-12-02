@@ -1,11 +1,12 @@
-const print = function(value) {
+const print = function(value, part = 'one') {
+  const text = !!value ? value : `${value}?! Learn to write better code LMAO`;
   const answer = `
    .-""-.
   /,..___)
  () {_____}
-   (/-@-@--)
-   {'-=^=-'}
-   {  '-'  } Santa says ${value}
+   (--O-O--)
+   {'--^--'}
+   {  '-'  } Santa says part ${part} is: ${text}
     {     }
      '---'
   `

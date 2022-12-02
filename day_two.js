@@ -6,11 +6,11 @@ const calculateScore = function (fileString) {
   const data = cleanData(fileString);
   const roundScores = data.map(calculateRoundScore);
   const sumRoundScores = roundScores.reduce((a, b) => a + b);
-  helperElf.log(`round one is: ${sumRoundScores}`);
+  helperElf.log(sumRoundScores, 'one');
 
   const thrownRoundScores = data.map(throwRound);
   const sumThrownRoundScores = thrownRoundScores.reduce((a, b) => a + b);
-  helperElf.log(`round two is: ${sumThrownRoundScores}`);
+  helperElf.log(sumThrownRoundScores, 'two');
 };
 
 const cleanData = function (fileString) {

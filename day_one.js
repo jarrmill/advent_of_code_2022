@@ -5,12 +5,12 @@ const filename = 'd1.txt';
 const getMostCalories = function(data) {
   const cleaned_data = cleanData(data);
   const summed_data = sumCalories(cleaned_data);
-  helperElf.log(`Part One: ${Math.max(...summed_data)}`);
+  helperElf.log(Math.max(...summed_data));
 
   // part TWO
   const sorted_data = sortSummedCalories(summed_data);
   const sum_top_three = sorted_data.slice(0, 3).reduce((a, b) => a + b);
-  helperElf.log(`Part Two: ${sum_top_three}`);
+  helperElf.log(sum_top_three, 'two');
 }
 
 const cleanData = function(data) {
