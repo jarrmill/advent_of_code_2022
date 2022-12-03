@@ -35,17 +35,7 @@ const returnDuplicateLetters = function(rucksackArr) {
   // note: array of duplicate letters does not contain any duplicates itself
   const letterDict = {};
   const results = {};
-  // const [first, second] = rucksackTuple;
 
-  // first.split('').forEach(letter => {
-  //   letterDict[letter] = true;
-  // });
-
-  // second.split('').forEach(letter => {
-  //   if (letterDict[letter]) {
-  //     results[letter] = true;
-  //   }
-  // })
   rucksackArr.forEach((str, i) => {
     const isFinal = rucksackArr.length === i + 1;
     if (!isFinal) {
