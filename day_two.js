@@ -59,12 +59,6 @@ const xyzDict = {
   'Z': 6
 }
 
-const abcDict = {
-  'A': 1,
-  'B': 2,
-  'C': 3
-}
-
 const throwRound = function(rpsTuple) {
   const [elfPlay, outcome] = rpsTuple;
   const choices = ['X', 'Y', 'Z'];
