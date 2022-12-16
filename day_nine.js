@@ -4,28 +4,53 @@ const filename = 'd9.txt';
 
 const solvePuzzle = function(data) {
   const commands = cleanData(data);
-  const height = 4;
-  const width = 5;
-  let headLocation = [height, 0];
-  let tailLocation = [height, 0];
-  // const board = initializeBoard(height, width);
-  // console.log(board);
+  let headLocation = [0, 0];
+  let tailLocation = [0, 0];
+
   const tailSpacesVisited = new Set();
   tailSpacesVisited.add(getTailStr(tailLocation));
-  const tailHistory = [getTailStr(tailLocation)];
+
   commands.forEach(command => {
-    headLocation = moveHead(command, height, width, headLocation);
+    headLocation = moveHead(command, headLocation);
     tailLocation = moveTail(headLocation, tailLocation);
     const tailStr = getTailStr(tailLocation);
-    tailHistory.push(tailStr);
     tailSpacesVisited.add(tailStr);
-    // console.log('Command: ', command);
-    // console.log('Head location: ', headLocation);
-    // console.log('Tail Location: ', tailLocation);
-    // console.log(' ---- ');
   });
-  // console.log('Tail spaces visited: ', tailSpacesVisited.size);
+
   helperElf.log(tailSpacesVisited.size);
+
+  // const part two
+  const tSet = new Set();
+  const tHistory = [];
+  let h = [0, 0];
+  let r1 = [0,0];
+  let r2 = [0,0];
+  let r3 = [0,0];
+  let r4 = [0,0];
+  let r5 = [0,0];
+  let r6 = [0,0];
+  let r7 = [0,0];
+  let r8 = [0,0];
+  let t  = [0,0];
+  tSet.add(getTailStr(t));
+  commands.forEach(command => {
+    h = moveHead(command, h);
+    r1 = moveTail(h, r1);
+    r2 = moveTail(r1, r2);
+    r3 = moveTail(r2, r3);
+    r4 = moveTail(r3, r4);
+    r5 = moveTail(r4, r5);
+    r6 = moveTail(r5, r6);
+    r7 = moveTail(r6, r7);
+    r8 = moveTail(r7, r8);
+    t = moveTail(r8, t);
+
+    const tStr = getTailStr(t);
+    tSet.add(tStr);
+    tHistory.push(tStr);
+    console.log(tHistory);
+  });
+  helperElf.log(tSet.size, 'two');
 }
 
 const cleanData = function(data) {
@@ -39,17 +64,7 @@ const cleanData = function(data) {
   return commands;
 }
 
-const initializeBoard = function(height, length) {
-  const board = [];
-
-  for (let i = 0; i < height + 1; i++) {
-    board.push(new Array(length));
-  }
-  
-  return board;
-}
-
-const moveHead = function(direction, height, width, headLocation) {
+const moveHead = function(direction, headLocation) {
   // output: new coords
   let [y, x] = headLocation
   switch(direction) {
@@ -106,7 +121,7 @@ const moveTail = function(headLocation, tailLocation) {
     } 
   }
 
-  return [tailY, tailX];
+  return results = [tailY, tailX];
 }
 
 const getTailStr = function(tailLocation) {
